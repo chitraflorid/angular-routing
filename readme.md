@@ -4,10 +4,8 @@
 
 - Explain what dependency injection is and what problem it solves
 - Explain the purpose of templates in Angular
-- Create separate views and routes for each CRUD action
 - Use the `ui-view` directive to load angular templates
 - Use `$stateProvider` and `$state` to access query parameters and update the URL
-- Define multiple controllers in a single module
 
 ## Framing (15 / 15)
 
@@ -52,8 +50,8 @@ Today, we are going to build off of what we learned in the intro class, and repr
 ```
 $ git clone https://github.com/ga-wdi-exercises/angular-ui-router-stoplight.git
 $ cd angular-ui-router-stoplight/
-$ hs -p 9000
-$ open http://localhost:9000/
+$ hs
+$ open http://localhost:8080/
 ```
 
 >Note: `hs` can be installed on your system with `npm install -g http-server`
@@ -121,7 +119,7 @@ function RouterFunction($stateProvider){
 
 We've just defined the first **state**. Remember, we said earlier that a state is a lot like a route in Rails: it's a URL, often with an associated view and controller.
 
-In our browser, let's visit `http://localhost:9000/#/red`. (We'll talk about that weird hashmark in a second.)
+In our browser, let's visit `http://localhost:8080/#/red`. (We'll talk about that weird hashmark in a second.)
 
 .....and we shouldn't see anything exciting.
 
@@ -140,7 +138,7 @@ Let's replace the `ng-controller` with `ui-view`:
 ###### Let the State Choose the Controller
 
 ```js
-function Router($stateProvider){
+function RouterFunction($stateProvider){
   $stateProvider
   .state("color", {
     url: "/:color",
@@ -155,7 +153,7 @@ function Router($stateProvider){
 Add `$stateParams` as a dependency to `stoplightController`
 
 ```js
-.controller("stoplightController", ["$stateParams", stopLightControllerFunction])
+.controller("stoplightController", ["$stateParams", stoplightControllerFunction])
 //...
 function stoplightControllerFunction($stateParams){
   console.log($stateParams);
@@ -231,7 +229,7 @@ Remove the code from `index.html` and place it in `stoplight.html`. Then finally
 > Just one: one view, one controller.
 
 - What's the equivalent of `<%= yield %>` in Angular?
-> `data-ui-view`
+> `ui-view`
 
 ## Further Reading
 
