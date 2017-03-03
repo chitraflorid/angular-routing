@@ -7,17 +7,17 @@
 - Use the `ui-view` directive to load angular templates
 - Use `$stateProvider` and `$state` to access query parameters and update the URL
 
-## Framing (15 / 15)
+## Framing (15 minutes)
 
-So far we've been learning about Angular and its awesome power as front-end framework that allows us to easily build Single Page Applications (SPAs).  
+So far we've been learning about Angular and its awesome power as a front-end framework that allows us to easily build Single Page Applications (SPAs).  
 
 **Q**: What are some of the characteristics of SPAs?
 
 > Single Page Applications are Web applications that load a single HTML page and dynamically update that page as the user interacts with the application. SPAs use AJAX and HTML5 to create fluid and responsive web applications, without constant page reloads.
 
-### Turn and Talk: Problems with SPA's
+### Turn and Talk: Problems with SPA's (5 minutes)
 
-Take 1 minute to brainstorm any potential problems with single page applications. Then take another minute coming up with a short list with your neighbor; we'll go around and share your responses with the class.
+Take 3 minutes to brainstorm any potential problems with single page applications and write a short list with your neighbor; we'll go around and share your responses with the class.
 
 ---
 
@@ -45,11 +45,12 @@ As a result, this allows changes to the browser's URL to drive navigation throug
 
 Today, we are going to build off of what we learned in the intro class, and represent state utilizing `ui-router`.
 
-## Please Sit Back and Enjoy the Ride for This One
+## We Do: Stoplight!
 
 ```
 $ git clone https://github.com/ga-wdi-exercises/angular-ui-router-stoplight.git
 $ cd angular-ui-router-stoplight/
+$ npm install -g http-server
 $ hs
 $ open http://localhost:8080/
 ```
@@ -82,7 +83,7 @@ What happens if we were to remove the Array all together?
 
 We get an error. In order to create a module we have to specify the number of dependencies it has, even if that number is zero.
 
-A `.module` with an array creates a new module; without an array it looks up an existing module of that name.
+***A `.module` with an array creates a new module; without an array it looks up an existing module of that name.***
 
 [Bonus! Use strict && IIFEs](styleguide.md)
 
