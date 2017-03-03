@@ -52,8 +52,8 @@ Today, we are going to build off of what we learned in the intro class, and repr
 ```
 $ git clone https://github.com/ga-wdi-exercises/angular-ui-router-stoplight.git
 $ cd angular-ui-router-stoplight/
-$ hs -p 9000
-$ open http://localhost:9000/
+$ hs
+$ open http://localhost:8080/
 ```
 
 >Note: `hs` can be installed on your system with `npm install -g http-server`
