@@ -13,11 +13,11 @@ So far we've been learning about Angular and its awesome power as a front-end fr
 
 **Q**: What are some of the characteristics of SPAs?
 
-> Single Page Applications are Web applications that load a single HTML page and dynamically update that page as the user interacts with the application. SPAs use AJAX and HTML5 to create fluid and responsive web applications, without constant page reloads.
+> Single Page Applications are web applications that load a single HTML page and dynamically update that page as the user interacts with the application. SPAs use AJAX and HTML5 to create fluid and responsive web applications, without constant page reloads.
 
 ### Turn and Talk: Problems with SPA's (5 minutes)
 
-Take 3 minutes to brainstorm any potential problems with single page applications and write a short list with your neighbor; we'll go around and share your responses with the class.
+Take 3 minutes to brainstorm any potential problems with single page applications and write a short list with your neighbor. Then, We will take 2 minutes to go around and share your responses with the class.
 
 ---
 
@@ -41,7 +41,7 @@ Specifically, Angular's `ui-router` is a client-side single page application rou
 
 As a result, this allows changes to the browser's URL to drive navigation through the application and in turn allows the user to create a bookmark to a location deep within the single page application.
 
-## Let's Build an Angular App
+## Let's Build an Angular Application
 
 Today, we are going to build off of what we learned in the intro class, and represent state utilizing `ui-router`.
 
@@ -54,9 +54,6 @@ $ npm install -g http-server
 $ hs
 $ open http://localhost:8080/
 ```
-
->Note: `hs` can be installed on your system with `npm install -g http-server`
->http-server is a simple, zero-configuration command-line http server. It is powerful enough for production usage, but it's simple and hackable enough to be used for testing, local development, and learning.
 
 ### What Works So Far?
 
@@ -79,9 +76,9 @@ angular.module("stoplight", ["ui.router"])
 
 The process of requiring dependencies in Angular is called **dependency injection**. It's an extremely important part of Angular since this framework is all about modules being dependent on other modules.
 
-What happens if we were to remove the Array all together?
+***Q:*** What happens if we were to remove the Array all together?
 
-We get an error. In order to create a module we have to specify the number of dependencies it has, even if that number is zero.
+>We get an error. In order to create a module we have to specify the number of dependencies it has, even if that number is zero.
 
 ***A `.module` with an array creates a new module; without an array it looks up an existing module of that name.***
 
@@ -89,7 +86,7 @@ We get an error. In order to create a module we have to specify the number of de
 
 ###### Configuring ui.router
 
-Remember in Rails we had a `config/routes.rb` file with all of the routes defined in it. Here, we put the `routes` inside a `config` module.
+Remember in Rails we had a `config/routes.rb` file with all of the routes defined in it. Here, we put the `routes` inside a `.config` module.
 
 Let's add `.config` to our `app.js`:
 
@@ -120,9 +117,9 @@ function RouterFunction($stateProvider){
 
 We've just defined the first **state**. Remember, we said earlier that a state is a lot like a route in Rails: it's a URL, often with an associated view and controller.
 
-In our browser, let's visit `http://localhost:8080/#/red`. (We'll talk about that weird hashmark in a second.)
+In our browser, let's visit `http://localhost:8080/#/red`.
 
-.....and we shouldn't see anything exciting.
+..and we shouldn't see anything exciting.
 
 ###### `ui-view`
 
@@ -213,7 +210,7 @@ Remove the code from `index.html` and place it in `stoplight.html`. Then finally
 
 ---
 
-## [You do: Grumblr](http://ga-wdi-lessons.github.io/angular-routing/lab.html)
+## [You Do: Grumblr](http://ga-wdi-lessons.github.io/angular-routing/lab.html)
 
 ## Sample Quiz Questions
 
