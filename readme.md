@@ -4,72 +4,69 @@
 
 - Explain what dependency injection is and what problem it solves
 - Explain the purpose of templates in Angular
-- Create separate views and routes for each CRUD action
 - Use the `ui-view` directive to load angular templates
 - Use `$stateProvider` and `$state` to access query parameters and update the URL
-- Define multiple controllers in a single module
 
-## Framing (15 / 15)
+## Framing (15 minutes)
 
-So far we've been learning about Angular and its awesome power as front-end framework that allows us to easily build Single Page Apps.  
+So far we've been learning about Angular and its awesome power as a front-end framework that allows us to easily build Single Page Applications (SPAs).  
 
 **Q**: What are some of the characteristics of SPAs?
 
-> Single Page Applications are Web apps that load a single HTML page and dynamically update that page as the user interacts with the app. SPAs use AJAX and HTML5 to create fluid and responsive web apps, without constant page reloads.
+> Single Page Applications are web applications that load a single HTML page and dynamically update that page as the user interacts with the application. SPAs use AJAX and HTML5 to create fluid and responsive web applications, without constant page reloads.
 
-### Turn and Talk: Problems with SPA's
+### Turn and Talk: Problems with SPA's (5 minutes)
 
-Take 1 minute to brainstorm any potential problems with SPAs. Then take another minute coming up with a short list with your neighbor; we'll go around and share with the class.
+Take 3 minutes to brainstorm any potential problems with single page applications and write a short list with your neighbor. Then, We will take 2 minutes to go around and share your responses with the class.
 
 ---
 
 ### [Common Problems with SPA's](https://github.com/ga-wdi-lessons/angular-routing/blob/master/common-problems-with-spas.md)
 
-Many of the common problems with SPAs have to do with the question of how to manage an application's state. This is most evident with issues related to **bookmarking** and **deep linking**.
+Many of the common problems with single page applications have to do with the question of how to manage an application's state. This is most evident with issues related to **bookmarking** and **deep linking**.
 
 ### Application State Exemplified
 
-In order to get a better grasp of what we mean by an app's state, let take a look at a prolific SPA in the wild, [Trello](https://trello.com/).
+In order to get a better grasp of what we mean by an application's state, let's take a look at a prolific single page application in the wild, [Trello](https://trello.com/).
 
 Trello is a productivity management tool, that allows a user to have many different "boards", or a list of lists, and each board is made up of different "cards", or items in a list.
 
-Let's play around with a board, and see what happens to the url when we interact with the app.
+Let's play around with a board, and see what happens to the url when we interact with the application.
 
 ## [UI Router](https://github.com/angular-ui/ui-router) to the Rescue
 
-Today, we are going to be looking at one wildly popular solution in Angular to help address the problems we've uncovered with SPAs.
+Today, we are going to be looking at one wildly popular solution in Angular to help address the problems we've uncovered with single page applications.
 
-Specifically, Angular UI-Router is a client-side SPA routing framework that updates the browser's URL as the user navigates through the app.
+Specifically, Angular's `ui-router` is a client-side single page application routing framework that updates the browser's URL as the user navigates through the application.
 
-As a result, this allows changes to the browser's URL to drive navigation through the app, thus allowing the user to create a bookmark to a location deep within the SPA.
+As a result, this allows changes to the browser's URL to drive navigation through the application and in turn allows the user to create a bookmark to a location deep within the single page application.
 
-## Let's Build an Angular App
+## Let's Build an Angular Application
 
-Today, we are going to build off of what we learned in the intro class, and represent state utilizing `uiRouter`.
+Today, we are going to build off of what we learned in the intro class, and represent state utilizing `ui-router`.
 
-## Please Sit Back and Enjoy the Ride for this one
+## We Do: Stoplight!
 
 ```
 $ git clone https://github.com/ga-wdi-exercises/angular-ui-router-stoplight.git
 $ cd angular-ui-router-stoplight/
+$ npm install -g http-server
 $ hs
 $ open http://localhost:8080/
 ```
 
->Note: `hs` can be installed on your system with `npm install -g http-server`
-
-### What works so far
+### What Works So Far?
 
 Clicking on a bulb illuminates the correct color.
 
-### What we'll do
+### What We'll Do
 
 - Update the URL when clicking on a bulb
 - When the page loads, show the color corresponding to the URL
 - Let the router decide which controller to use
 - Create a `ui-view`
 
-#### Inject the `ui.router` dependency
+#### Inject the `ui.router` Dependency
 
 ```js
 angular.module("stoplight", ["ui.router"])
@@ -79,26 +76,26 @@ angular.module("stoplight", ["ui.router"])
 
 The process of requiring dependencies in Angular is called **dependency injection**. It's an extremely important part of Angular since this framework is all about modules being dependent on other modules.
 
-What happens if we were to remove the Array all together?
+***Q:*** What happens if we were to remove the Array all together?
 
-We get an error. In order to create a module we have to specify the number of dependencies it has, even if that number is zero.
+>We get an error. In order to create a module we have to specify the number of dependencies it has, even if that number is zero.
 
-A `.module` with an array creates a new module; without an array it looks up an existing module of that name.
+***A `.module` with an array creates a new module; without an array it looks up an existing module of that name.***
 
 [Bonus! Use strict && IIFEs](styleguide.md)
 
 ###### Configuring ui.router
 
-Remember in Rails we had a `config/routes.rb` file with all of the routes defined in it. Here, we put the `routes` inside a `config` module.
+Remember in Rails we had a `config/routes.rb` file with all of the routes defined in it. Here, we put the `routes` inside a `.config` module.
 
 Let's add `.config` to our `app.js`:
 
 ```js
 angular
 .module("stoplight", ["ui.router"])
-.config(["$stateProvider", Router])
+.config(["$stateProvider", RouterFunction])
 
-function Router($stateProvider){
+function RouterFunction($stateProvider){
   console.log('Router setup correctly')
 }
 ```
@@ -107,10 +104,10 @@ function Router($stateProvider){
 
 A **state** in Angular is basically a route: it's an umbrella term for a URL, the view associated with it, and any controllers used in that view.
 
-Modify the `Router` function to look like this:
+Modify the `RouterFunction` function to look like this:
 
 ```js
-function Router($stateProvider){
+function RouterFunction($stateProvider){
   $stateProvider
   .state("color", {
     url: "/:color"
@@ -120,9 +117,9 @@ function Router($stateProvider){
 
 We've just defined the first **state**. Remember, we said earlier that a state is a lot like a route in Rails: it's a URL, often with an associated view and controller.
 
-In our browser, let's visit `http://localhost:8080/#/red`. (We'll talk about that weird hashmark in a second.)
+In our browser, let's visit `http://localhost:8080/#/red`.
 
-.....and we shouldn't see anything exciting.
+..and we shouldn't see anything exciting.
 
 ###### `ui-view`
 
@@ -136,10 +133,10 @@ Let's replace the `ng-controller` with `ui-view`:
 
 `index.html` is now like the `application.html.erb` file we had in Rails.
 
-###### Let the state choose the controller
+###### Let the State Choose the Controller
 
 ```js
-function Router($stateProvider){
+function RouterFunction($stateProvider){
   $stateProvider
   .state("color", {
     url: "/:color",
@@ -149,15 +146,15 @@ function Router($stateProvider){
 }
 ```
 
-###### View the state params
+###### View the State Params
 
 Add `$stateParams` as a dependency to `stoplightController`
 
 ```js
-.controller("stoplightController", ["$stateParams", stopLightController])
+.controller("stoplightController", ["$stateParams", stoplightControllerFunction])
 //...
-function stoplightController($sateParams){
-  console.log($stateParams)
+function stoplightControllerFunction($stateParams){
+  console.log($stateParams);
   this.bg = $stateParams.color
 }
 ```
@@ -167,9 +164,9 @@ function stoplightController($sateParams){
 Inject `$state` to the controller
 
 ```js
-.controller("stoplightController", ["$state","$stateParams", stopLightController])
+.controller("stoplightController", ["$state","$stateParams", stoplightControllerFunction])
 //...
-function stopLightController($state, $stateParams){
+function stoplightControllerFunction($state, $stateParams){
   this.bg = $stateParams.color
   this.colors = ['red', 'yellow','green']
   this.turn = function(color){
@@ -179,13 +176,13 @@ function stopLightController($state, $stateParams){
 }
 ```
 
-One thing we should talk about is how we can do templating and partials in angular. Let's take our existing app and have a template render the view instead of having it in our `index.html` First let's create a view:
+One thing we should talk about is how we can do templating and partials in Angular. Let's take our existing application and have a template render the view instead of having it in our `index.html` First let's create a view:
 
 ```bash
 $ touch stoplight.html
 ```
 
-Then finally lets important to code pertinent to stoplights from `index.html` to `stoplight.html`
+Then lets import code pertinent to the stoplights from `index.html` to `stoplight.html`
 
 Take the following code:
 
@@ -200,12 +197,12 @@ Take the following code:
 </div>
 ```
 
-Remove it from `index.html` and place it in `stoplight.html`. Then finally include a `templateUrl` as a property of the state:
+Remove the code from `index.html` and place it in `stoplight.html`. Then finally include a `templateUrl` as a property of the state:
 
 ```js
 .state('color', {
   url: '/:color',
-  controller: 'StopLightController',
+  controller: 'StoplightController',
   controllerAs: 'vm',
   templateUrl: 'stoplight.html'
 })
@@ -213,7 +210,7 @@ Remove it from `index.html` and place it in `stoplight.html`. Then finally inclu
 
 ---
 
-## [You do: Grumblr](http://ga-wdi-lessons.github.io/angular-routing/lab.html)
+## [You Do: Grumblr](http://ga-wdi-lessons.github.io/angular-routing/lab.html)
 
 ## Sample Quiz Questions
 
@@ -230,7 +227,7 @@ Remove it from `index.html` and place it in `stoplight.html`. Then finally inclu
 > Just one: one view, one controller.
 
 - What's the equivalent of `<%= yield %>` in Angular?
-> `data-ui-view`
+> `ui-view`
 
 ## Further Reading
 
