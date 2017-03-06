@@ -240,7 +240,7 @@ function GrumbleIndexControllerFunction(){
 
 ```html
 <!-- js/ng-views/index.html -->
-<div data-ng-repeat="grumble in vm.grumbles">
+<div ng-repeat="grumble in vm.grumbles">
   <p>{% raw %}{{grumble.title}}{% endraw %}</p>
 </div>
 ```
