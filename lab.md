@@ -117,7 +117,7 @@ In `app.js`, let's add the following code:
 ]);
 
 function GrumbleIndexControllerFunction(){
-  console.log("I'm in the controller!");
+  console.log("I'm in the controller!")
 }
 ```
 
@@ -178,7 +178,7 @@ Let's put a piece of HTML into that `index.html`, just so we know it's working:
 ```
 
 ```js
-function RouterFunction($stateProvider){
+function Router($stateProvider){
   $stateProvider
   .state("grumbleIndex", {
     url: "/grumbles",
@@ -440,10 +440,10 @@ First, inject `$locationProvder` into your router. Then, add `$locationProvider.
   .config([
     "$stateProvider",
     "$locationProvider",
-    RouterFunction
+    Router
   ]);
 
-  function RouterFunction($stateProvider, $locationProvider){
+  function Router($stateProvider, $locationProvider){
     $locationProvider.html5Mode(true);
 // ...
 ```
