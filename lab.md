@@ -255,7 +255,7 @@ You should see each of the grumbles when you refresh the page.
 
 Using `ui-sref`
 
-Before we make the show pages themselves, we're going to create some links to them.
+Before we make the show pages themselves, we're going to create some links to them. We use `ui-sref` which is a directive that binds a link to a state in order to accomplish that.
 
 The problem is, these grumbles don't actually have IDs -- they're just items in an array.
 
@@ -263,8 +263,8 @@ Inside `ng-repeat`, you automatically have access to a variable called [`$index`
 
 ```html
 <h2>I'm the Grumbles index!</h2>
-<div data-ng-repeat="grumble in vm.grumbles">
-  <p><a data-ui-sref="grumbleShow({id: $index})">{{grumble.title}}</a></p>
+<div ng-repeat="grumble in vm.grumbles">
+  <p><a ui-sref="grumbleShow({id: $index})">{{grumble.title}}</a></p>
 </div>
 ```
 
@@ -411,8 +411,8 @@ Thanks to two-way data binding, an "update" button is unnecessary! The grumble i
 1. Create a new controller for creating a grumble
 1. Link to the new state from the index state
 1. Create a template containing a form for a new grumble
-  - add `data-ng-model="GrumbleNewViewModel.newGrumble.title"`
-  - add `data-ng-click="GrumbleNewViewModel.create()"`
+  - add `ng-model="GrumbleNewViewModel.newGrumble.title"`
+  - add `ng-click="GrumbleNewViewModel.create()"`
 1. on `ng-submit`
   - access grumble properties with `this.newGrumble` in the controller
   - push the new grumble into the global `grumbles` array
