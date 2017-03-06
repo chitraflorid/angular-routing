@@ -70,14 +70,15 @@ You should see the word Grumblr.
 
 ```js
 // app.js
-angular.module("grumblr", ["ui.router"]);
+angular
+.module("grumblr", ["ui.router"])
 ```
 
 Add `ng-app` to index.html
 
 ```html
 <!-- index.html -->
-<body ng-app='grumblr'>
+<html ng-app='grumblr'>
 ```
 
 </section>
@@ -91,7 +92,8 @@ Add `ng-app` to index.html
 
 ```js
 // app.js
-angular.module("grumblr", ["ui.router"])
+angular
+.module("grumblr", ["ui.router"])
 .config(["$stateProvider", Router])
 
 function Router($stateProvider){
@@ -114,7 +116,7 @@ In `app.js`, let's add the following code:
 ```js
 .controller("GrumbleIndexController", [
   GrumbleIndexControllerFunction
-]);
+])
 
 function GrumbleIndexControllerFunction(){
   console.log("I'm in the controller!")
@@ -183,7 +185,7 @@ function Router($stateProvider){
   .state("grumbleIndex", {
     url: "/grumbles",
     controller: "GrumbleIndexController",
-    controllerAs: "vm"
+    controllerAs: "vm",
     templateUrl: "js/ng-views/index.html"
   });
 }
@@ -264,7 +266,7 @@ Inside `ng-repeat`, you automatically have access to a variable called [`$index`
 ```html
 <h2>I'm the Grumbles index!</h2>
 <div ng-repeat="grumble in vm.grumbles">
-  <p><a ui-sref="grumbleShow({id: $index})">{{grumble.title}}</a></p>
+  <p><a ui-sref="grumbleShow({id: $index})">{% raw %}{{grumble.title}}{% endraw %}</a></p>
 </div>
 ```
 
@@ -329,7 +331,7 @@ angular
 .module("grumblr")
 .controller("GrumbleShowController", [
   GrumbleShowControllerFunction
-]);
+])
 
 function GrumbleShowControllerFunction(){
   this.grumble = {}
@@ -359,7 +361,7 @@ Now we need a way of getting the ID from the URL. Angular makes this possible wi
 .controller("GrumbleShowController", [
   "$stateParams",
   GrumbleShowControllerFunction
-]);
+])
 
 function GrumbleShowControllerFunction($stateParams){
   console.log($stateParams);
