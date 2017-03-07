@@ -328,7 +328,7 @@ To start the show controller, We're just going to copy the index controller. We'
 
 ```js
 angular
-.module("grumblr")
+.module("grumblr", ["ui.router"])
 .controller("GrumbleShowController", [
   GrumbleShowControllerFunction
 ])
