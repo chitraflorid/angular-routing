@@ -17,7 +17,7 @@ So far we've been learning about Angular and its awesome power as a front-end fr
 
 ### Turn and Talk: Problems with SPA's (5 minutes)
 
-Take 3 minutes to brainstorm any potential problems with single page applications and write a short list with your neighbor. Then, We will take 2 minutes to go around and share your responses with the class.
+Take 5 minutes to brainstorm any potential problems with single page applications and write a short list with your neighbor. Post your findings as a comment on [this issue](https://github.com/ga-wdi-lessons/angular-routing/issues/14)
 
 ---
 
@@ -52,8 +52,9 @@ $ git clone https://github.com/ga-wdi-exercises/angular-ui-router-stoplight.git
 $ cd angular-ui-router-stoplight/
 $ npm install -g http-server
 $ hs
-$ open http://localhost:8080/
 ```
+
+Now, go to http://localhost:8080/
 
 ### What Works So Far?
 
