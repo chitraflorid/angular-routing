@@ -122,17 +122,7 @@ In our browser, let's visit `http://localhost:8080/#/red`.
 
 ..and we shouldn't see anything exciting.
 
-###### `ui-view`
 
-Let's replace the `ng-controller` with `ui-view`:
-
-```html
-<div ng-controller='stoplightController as vm'>
-<!-- should be: -->
-<div ui-view>
-```
-
-`index.html` is now like the `application.html.erb` file we had in Rails.
 
 ###### Let the State Choose the Controller
 
@@ -147,20 +137,9 @@ function RouterFunction($stateProvider){
 }
 ```
 
-###### View the State Params
+###### Update the url on click
 
 Add `$stateParams` as a dependency to `stoplightController`
-
-```js
-.controller("stoplightController", ["$stateParams", stoplightControllerFunction])
-//...
-function stoplightControllerFunction($stateParams){
-  console.log($stateParams);
-  this.bg = $stateParams.color
-}
-```
-
-###### Update the url on click
 
 Inject `$state` to the controller
 
@@ -176,6 +155,18 @@ function stoplightControllerFunction($state, $stateParams){
   }
 }
 ```
+
+###### `ui-view`
+
+Let's replace the `ng-controller` with `ui-view`:
+
+```html
+<div ng-controller='stoplightController as vm'>
+<!-- should be: -->
+<div ui-view>
+```
+
+`index.html` is now like the `application.html.erb` file we had in Rails.
 
 One thing we should talk about is how we can do templating and partials in Angular. Let's take our existing application and have a template render the view instead of having it in our `index.html` First let's create a view:
 
