@@ -87,7 +87,7 @@ The process of requiring dependencies in Angular is called **dependency injectio
 
 ###### Configuring ui.router
 
-Remember in Rails we had a `config/routes.rb` file with all of the routes defined in it. Here, we put the `routes` inside a `.config` module.
+Remember in Rails we had a `config/routes.rb` file with all of the routes defined in it. Here, we put the `routes` inside a `.config` definition.
 
 Let's add `.config` to our `app.js`:
 
